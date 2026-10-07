@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d16">
+  <meta name="description" content="A sample fantasy football league dashboard with odds, matchup projections, and a weekly power ranking ballot.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101b2b'/%3E%3Cpath d='M15 41c5-20 16-26 34-18-1 18-10 28-30 27' fill='none' stroke='%23f8b84e' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='m27 28 11 12m-9-7 7-4m-4 7 7-4' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+  <title>Bye-Bye Jimmy · Fantasy Football</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar"><div class="topinner"><a class="brand" href="#overview"><span class="mark" aria-hidden="true">◆</span> BYE-BYE JIMMY</a><nav class="nav" aria-label="Main navigation"><a class="nav-link" data-nav="overview" href="#overview">Overview</a><a class="nav-link" data-nav="teams" href="#teams">Teams</a><a class="nav-link" data-nav="analytics" href="#analytics">Analytics</a></nav><div class="topmeta" id="league-meta">2026 season · ESPN data</div></div></header>
+  <main class="shell" id="main">
+    <section data-page="overview">
+      <div class="intro"><div><div class="eyebrow">Bye-Bye Jimmy fantasy football</div><h1>The league, at a glance.</h1><p>Title futures, weekly results and moneylines, and the league’s power rankings.</p></div><span class="demo" id="data-label">Loading league data</span></div>
+      <div class="grid">
+        <section class="card" aria-labelledby="champ-title"><div class="cardhead"><div><h2 id="champ-title">Championship futures</h2><p id="champ-context">Forecast odds from season simulations.</p></div><span class="tag" id="champ-week"></span></div><div class="odds-list" id="odds"></div></section>
+        <div class="right-stack">
+          <section class="card" aria-labelledby="weekly-title"><div class="cardhead"><div><h2 id="weekly-title">Weekly matchups</h2><p id="week-context">Final scores and model moneylines.</p></div><select id="week" class="weeksel" aria-label="Select week"></select></div><div class="matchups" id="matchups"></div></section>
+          <section class="card" aria-labelledby="poll-title"><div class="cardhead"><div><h2 id="poll-title">Power ranking poll</h2><p>Your top three teams this week.</p></div><span class="tag" id="poll-week"></span></div><div class="poll-body"><p class="poll-instruction">Rank three different teams. Your ballot is saved on this device.</p><form id="poll"><div id="picks"></div><button class="submit" type="submit">Save my ballot</button><p class="feedback" id="feedback" role="status"></p></form></div></section>
+        </div>
+        <section class="card analytics" aria-labelledby="around-title"><div class="cardhead"><div><h2 id="around-title">Around the league</h2><p>Quick reads from the season so far.</p></div></div><div class="stats" id="stats"></div></section>
+      </div>
+      <p class="footer">Teams, rosters, records, scores, and matchups come from ESPN. Forecast odds are fair model estimates with no sportsbook margin; they are not betting lines. Poll ballots remain on this device.</p>
+    </section>
+    <section data-page="teams" hidden>
+      <div class="page-heading"><div class="eyebrow">2026 season</div><h1>Teams</h1><p>Open a team to see its roster, scoring, and every matchup.</p></div>
+      <div class="team-layout"><aside class="card team-sidebar" aria-label="League teams"><div class="sidebar-heading">All teams</div><div id="team-list"></div></aside><article class="card team-detail" id="team-detail"></article></div>
+    </section>
+    <section data-page="analytics" hidden>
+      <div class="page-heading"><div class="eyebrow">League history &amp; analysis</div><h1>Analytics</h1><p>Compare scoring, performance against the field, and previous seasons.</p></div>
+      <div class="season-tabs" id="season-tabs" aria-label="Season"></div><div id="analytics-content"></div>
+      <section class="card model-card" aria-labelledby="model-title"><div class="cardhead"><div><h2 id="model-title">How the odds work</h2><p>Inputs and assumptions behind the live forecast.</p></div><span class="tag">Forecast v1</span></div><div class="model-steps"><div><span class="step-num">01</span><h3>Project scores</h3><p>For this week, optimize each roster’s legal starting lineup using ESPN player projections, then blend that total with recent and season scoring. Later weeks use a recency-weighted team baseline.</p></div><div><span class="step-num">02</span><h3>Allow for upsets</h3><p>Estimate score variation from completed league games. Shrink each team’s small sample toward the league spread; prior seasons will stabilize it when their data is connected.</p></div><div><span class="step-num">03</span><h3>Simulate the title</h3><p>Run 30,000 versions of the remaining schedule and Bye-Bye Jimmy’s eight-team playoff bracket after its 14-week regular season, with no reseeding.</p></div><div><span class="step-num">04</span><h3>Price fairly</h3><p>Convert forecast win and title probabilities to American odds without a sportsbook margin. Past-season backtesting is the next step for calibration.</p></div></div><p class="model-note">Forecasts assume managers fill legal lineups and use independent team score draws. ESPN projections may change, and playoff tiebreakers are approximated by wins then points scored. These estimates are for league discussion, not wagering.</p></section>
+    </section>
+  </main>
+  <script src="league-data.js"></script>
+  <script src="history-data.js"></script>
+  <script src="forecast-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
