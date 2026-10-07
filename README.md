@@ -2,9 +2,9 @@
 
 The local dashboard is connected to ESPN fantasy football league `696510781` for the 2026 season.
 
-## Share the saved site with league members
+## Share the website with league members
 
-Share the public repository link with league members. On GitHub, each member can choose **Code → Download ZIP**, extract the folder, and open `index.html` in a browser. The ZIP contains the most recently saved league and forecast snapshots; members do not need Python to view them. Download a new ZIP after you upload an updated snapshot. Poll ballots are saved only in each browser and are not shared across members.
+Open **<https://johnmwheeler.github.io/ByeByeJimmy/>** to view the rendered dashboard. Share that link with league members; the GitHub repository's `index.html` file view shows source code, not the website. GitHub Pages serves the latest committed league and forecast snapshots. It does not run the local Python refresh server, so update the snapshots locally and push them to `main` to update the public site. Poll ballots are saved only in each browser and are not shared across members.
 
 ## Open the connected dashboard
 
